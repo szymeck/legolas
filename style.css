@@ -1,0 +1,100 @@
+
+:root{
+    --timing: 400ms;
+}
+
+html{
+    color-scheme: dark ;
+}
+
+body{
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    perspective: 1000px;
+}
+img{
+    max-width: 100%;
+}
+.legolas{
+    width: 300px;
+    aspect-ratio: 9 / 16;
+    position: relative;
+  
+  transform-style: preserve-3d;
+    transition: rotate var(--timing) ease;
+}
+.legolas:hover{
+rotate: x 35deg;
+}
+
+.legolas::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    z-index: 100;
+    background-image: radial-gradient(circle ,transparent 50px, black);
+    opacity: 0;
+    transition: opacity var(--timing);
+}
+.legolas:hover::before{
+    opacity: 1;
+}
+.legolas:after{
+    content: "";
+    position: absolute;
+    inset: 80% 0.5rem 0.5rem;
+    translate: 0 ;
+    transform: translateZ(-10px);
+    background: black;
+    filter: blur(1rem);
+    z-index: 1;
+    transition: rotate var(--timing),translate var(--timing);
+}
+
+.legolas:hover::after{
+    rotate:x 30deg;
+    translate:0 60px;
+}
+
+.bg-image{
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+}
+.logo, .front-image {
+    position: absolute;
+    
+}
+.logo {
+    z-index: 1000;
+    filter: drop-shadow(1);
+    width: 45%;
+    transition: var(--timing);
+    margin-inline: auto;
+    inset: auto 0 2rem;
+     
+}
+.legolas:hover .logo{
+    transform: translateY(-2rem) translateZ(70px); 
+    rotate: x -35deg;
+}
+.front-image{
+    
+    opacity: 0;
+    transform-origin: bottom;
+    z-index: 100;
+    transition:var(--timing);
+}
+.legolas:hover .front-image{
+    opacity: 1;
+    
+}
+.legolas:hover .front-image{
+    opacity: 1;
+    transform: translateY(-2rem) translateZ(10px); 
+    rotate: x -35deg;
+}
